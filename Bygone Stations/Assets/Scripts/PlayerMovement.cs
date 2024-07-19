@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     public GameObject attackPrefab;
     public Transform groundCheck;
     public LayerMask groundLayer;
+    public StatUI statUI;
     void Awake()
     {
         pc = GameObject.FindWithTag("Player");
@@ -114,5 +115,21 @@ public class PlayerMovement : MonoBehaviour
             yield return null;
         }
         swinging = false;
+    }
+
+    void OnCollisionEnter2D(Collision2D collision){
+        Debug.Log("Hit " + collision.gameObject.name);
+        if(collision.gameObject.layer == 6){
+            Debug.Log("Hit Enemy!!!111!!!");
+            if(pc.GetComponent<Transform>().position.x < collision.gameObject.GetComponent<Transform>().position.x){
+                pc_r.velocity -= new Vector2(5, 1);
+                collision.gameObject.GetComponent<Rigidbody2D>().velocity += new Vector2(5, 1);
+            }else{
+                pc_r.velocity += new Vector2(5, 1);
+                collision.gameObject.GetComponent<Rigidbody2D>().velocity -= new Vector2(5, 1);
+            }
+        }
+        PlayerStats.DecreaseHp(1);
+        statUI.ChangeHP(PlayerStats.GetHp());
     }
 }
