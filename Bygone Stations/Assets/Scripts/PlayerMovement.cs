@@ -6,13 +6,19 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private float speed = 5;
-    private float jumpPower = 5;
+    [SerializeField] private float speed = 5;
+    [SerializeField] private float jumpPower = 5;
     private bool facingRight = true;
     private bool swinging = false;
     private float horizontal;
+    private bool notMoving = false;
+    private bool sprinting = false;
     private float timer = 0.0f;
+    private float flowTimer = 0.0f;
+    private float flowOver = 3.0f;
     private float waitTime = 1.0f;
+    private float sprintTime = 0.0f;
+    private float needToSprintTime = 2.0f;
     private GameObject pc;
     private Rigidbody2D pc_r;
     public GameObject attackPrefab;
@@ -36,6 +42,24 @@ public class PlayerMovement : MonoBehaviour
         }else if(facingRight && horizontal < 0f){
             Flip();
         }
+
+        if(notMoving){
+            flowTimer += Time.deltaTime;
+            if(flowTimer > flowOver){
+                flowTimer = 0;
+                PlayerStats.DecreaseFlow(5);
+                statUI.ChangeFlow(PlayerStats.GetFlow());
+            }
+        }
+
+        if(sprinting){
+            sprintTime += Time.deltaTime;
+            if(sprintTime > needToSprintTime){
+                sprintTime = 0.0f;
+                PlayerStats.DecreaseFlow(-1);
+                statUI.ChangeFlow(PlayerStats.GetFlow());
+            }
+        }
     }
 
     public void Jump(InputAction.CallbackContext context){
@@ -44,6 +68,14 @@ public class PlayerMovement : MonoBehaviour
         }
         if(context.canceled && pc_r.velocity.y > 0f){
             pc_r.velocity = new Vector2(pc_r.velocity.x, pc_r.velocity.y * 0.5f);
+        }
+
+        if(context.performed){
+            flowTimer = 0;
+            notMoving = false;
+        }
+        if(context.canceled){
+            notMoving = true;
         }
     }
 
@@ -60,12 +92,33 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext context){
         horizontal = context.ReadValue<Vector2>().x;
+        if(context.performed){
+            flowTimer = 0;
+            notMoving = false;
+        }
+        if(context.canceled){
+            notMoving = true;
+        }
     }
 
     public void OnFire(InputAction.CallbackContext context){
         if(context.performed && !swinging){
             StartCoroutine(AttackDrop());
             swinging = true;
+        }
+    }
+
+    public void OnShift(InputAction.CallbackContext context){
+        if(context.performed){
+            sprinting = true;
+            speed = 7;
+            jumpPower = 7;
+        }
+
+        if(context.canceled){
+            sprinting = false;
+            speed = 5;
+            jumpPower = 5;
         }
     }
 
@@ -128,8 +181,8 @@ public class PlayerMovement : MonoBehaviour
                 pc_r.velocity += new Vector2(5, 1);
                 collision.gameObject.GetComponent<Rigidbody2D>().velocity -= new Vector2(5, 1);
             }
+            PlayerStats.DecreaseHp(1);
         }
-        PlayerStats.DecreaseHp(1);
         statUI.ChangeHP(PlayerStats.GetHp());
     }
 }
