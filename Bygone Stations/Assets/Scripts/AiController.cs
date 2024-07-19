@@ -49,7 +49,7 @@ namespace RPG.Control {
         {
             if (canMove) {
                 if (DistanceToPlayer() < chaseDistance) {
-                    print(gameObject.name + "CHASE CHASE CHASE!!!"); 
+                    // print(gameObject.name + "CHASE CHASE CHASE!!!"); 
                     Vector2 direction = player.transform.position - transform.position;
                     
                     if (direction.x > 0) {
