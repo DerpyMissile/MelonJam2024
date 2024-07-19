@@ -30,8 +30,12 @@ namespace RPG.Control {
     public class AIController : MonoBehaviour {
         [SerializeField] float chaseDistance = 5f; 
         [SerializeField] float jumpDistance = 3f; 
-        [SerializeField] float chaseSpeed = 2f; 
-        [SerializeField] float jumpSpeed = 3f; 
+
+        [SerializeField] float chaseCloseDistance = 2f; 
+        [SerializeField] float chaseSpeed = 0.5f; 
+        [SerializeField] float jumpSpeed = 1f; 
+
+        bool canMove = true; 
         // GameObject player = GameObject.FindWithTag("Player");
         // 5 Unity units
 
@@ -43,30 +47,57 @@ namespace RPG.Control {
 
         private void Update()
         {
-            if (DistanceToPlayer() < chaseDistance) {
-                print(gameObject.name + "CHASE CHASE CHASE!!!"); 
-                if (DistanceToPlayer() > jumpDistance) {
+            if (canMove) {
+                if (DistanceToPlayer() < chaseDistance) {
+                    print(gameObject.name + "CHASE CHASE CHASE!!!"); 
                     Vector2 direction = player.transform.position - transform.position;
                     direction = new Vector2(direction.x, 0);
-                    Debug.Log(direction.x); 
-                    transform.Translate(direction * chaseSpeed * Time.deltaTime);
-                }
-                else {
-                    // delay for a bit
-                    // Vector2 direction = player.transform.position - transform.position;
-                    // direction = new Vector2(direction.x, 0);
-                    // Debug.Log(direction.x); 
-                    // transform.Translate(direction * chaseSpeed * Time.deltaTime);
-                }
+                    // Chase regularly if outside of jump distance
+                    if (DistanceToPlayer() > jumpDistance) {
+                        transform.Translate(direction * chaseSpeed * Time.deltaTime);
+                    }
+                    // If within jump distance, 
+                    else {
+                        // // Jump
+                        // if (DistanceToPlayer() > chaseCloseDistance) {
+                        //     Invoke("Jump", 1f);   
+                        // }
+                        // // Chase regularly
+                        // else {
+                        //     transform.Translate(direction * chaseSpeed * Time.deltaTime);
+                        // }
+                        transform.Translate(direction * jumpSpeed * Time.deltaTime);
 
+                    }
+                    // else {
+                    //     // delay for a bit
+                    //     // Vector2 direction = player.transform.position - transform.position;
+                    //     // direction = new Vector2(direction.x, 0);
+                    //     // Debug.Log(direction.x); 
+                         
+                    // }
+                }
             }
+        }
+
+        void Jump() {
+            Vector2 direction = player.transform.position - transform.position;
+            direction = new Vector2(direction.x, 0);
+            transform.Translate(direction * jumpSpeed * Time.deltaTime);
         }
 
         void OnCollisionEnter2D(Collision2D other) {
             if (other.gameObject.tag == "Player") {
-                Vector2 direction = player.transform.position - transform.position;
-                direction = new Vector2(-direction.x, 0);
-                transform.Translate(direction * chaseSpeed * Time.deltaTime);
+                // Vector2 direction = player.transform.position - transform.position;
+                // direction = new Vector2(-direction.x, 0); 
+                // transform.Translate(direction * 0 * Time.deltaTime);
+                canMove = false; 
+            }
+        }
+
+        void OnCollisionExit2D(Collision2D other) {
+            if (other.gameObject.tag == "Player") {
+                canMove = true; 
             }
         }
 
