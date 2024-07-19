@@ -173,7 +173,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Actions: {fileID: -944628639613478452, guid: ceca913864d124441a18d3148adca953, type: 3}
-  m_NotificationBehavior: 0
+  m_NotificationBehavior: 2
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
     m_PersistentCalls:
@@ -254,3 +254,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb1074eaedc15bd4ab394483d1001281, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackPrefab: {fileID: 7272650463281056198, guid: 7fa4648590946844f8d5711b205b3cae, type: 3}
+  groundCheck: {fileID: 0}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 8
