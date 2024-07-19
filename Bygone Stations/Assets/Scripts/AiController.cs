@@ -51,22 +51,30 @@ namespace RPG.Control {
                 if (DistanceToPlayer() < chaseDistance) {
                     print(gameObject.name + "CHASE CHASE CHASE!!!"); 
                     Vector2 direction = player.transform.position - transform.position;
-                    direction = new Vector2(direction.x, 0);
+                    
+                    if (direction.x > 0) {
+                        direction = new Vector2(1, 0);
+                    }
+                    else {
+                        direction = new Vector2(-1, 0);
+                    }
+
                     // Chase regularly if outside of jump distance
                     if (DistanceToPlayer() > jumpDistance) {
                         transform.Translate(direction * chaseSpeed * Time.deltaTime);
                     }
                     // If within jump distance, 
                     else {
-                        // // Jump
-                        // if (DistanceToPlayer() > chaseCloseDistance) {
-                        //     Invoke("Jump", 1f);   
-                        // }
-                        // // Chase regularly
-                        // else {
-                        //     transform.Translate(direction * chaseSpeed * Time.deltaTime);
-                        // }
-                        transform.Translate(direction * jumpSpeed * Time.deltaTime);
+                        // Jump
+                        if (DistanceToPlayer() > chaseCloseDistance) {
+                            Invoke("Jump", 1f);   
+                        }
+                        // Chase regularly
+                        else {
+                            transform.Translate(direction * chaseSpeed * Time.deltaTime);
+                        }
+                        
+                        // transform.Translate(direction * jumpSpeed * Time.deltaTime);
 
                     }
                     // else {
