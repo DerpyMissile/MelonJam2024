@@ -18,7 +18,7 @@ public class PlayerMovement : MonoBehaviour
     private bool flowing = false;
     private float timer = 0.0f;
     private float flowTimer = 0.0f;
-    private float flowOver = 3.0f;
+    private float flowOver = 1.0f;
     private float waitTime = 1.0f;
     private float sprintTime = 0.0f;
     private float needToSprintTime = 2.0f;
@@ -187,15 +187,13 @@ public class PlayerMovement : MonoBehaviour
         Destroy(firedAttack);
     }
 
-    IEnumerator RotateSwing(GameObject firedAttack)
-    {
+    IEnumerator RotateSwing(GameObject firedAttack){
         float totalRotation = 45f;
         float rotationSpeed = totalRotation / waitTime;
         Vector2 currPos = pc.GetComponent<Transform>().position;
 
         float elapsedTime = 0.0f;
-        while (elapsedTime < waitTime)
-        {
+        while (elapsedTime < waitTime){
             float rotationStep = rotationSpeed * Time.deltaTime;
             firedAttack.GetComponent<Transform>().RotateAround(currPos, Vector3.forward, rotationStep);
             elapsedTime += Time.deltaTime;
@@ -221,6 +219,7 @@ public class PlayerMovement : MonoBehaviour
             }
 
             PlayerStats.DecreaseHp(10);
+            PlayerStats.DecreaseFlow(1);
             statUI.ChangeHP(PlayerStats.GetHp());
             if (PlayerStats.GetHp() == 0) {
                 SceneManager.LoadScene(1); 
@@ -260,6 +259,7 @@ public class PlayerMovement : MonoBehaviour
         // Bullet hit player
         if (collision.gameObject.tag == "Bullet") {
             PlayerStats.DecreaseHp(5);
+            PlayerStats.DecreaseFlow(1);
             statUI.ChangeHP(PlayerStats.GetHp());
             if (PlayerStats.GetHp() == 0) {
                 SceneManager.LoadScene(1); 
