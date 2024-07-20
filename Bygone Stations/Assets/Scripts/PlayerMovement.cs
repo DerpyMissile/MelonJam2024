@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     private float horizontal;
     private bool notMoving = false;
     private bool sprinting = false;
+    private bool flowing = false;
     private float timer = 0.0f;
     private float flowTimer = 0.0f;
     private float flowOver = 3.0f;
@@ -59,6 +60,18 @@ public class PlayerMovement : MonoBehaviour
                 PlayerStats.DecreaseFlow(-1);
                 statUI.ChangeFlow(PlayerStats.GetFlow());
             }
+        }
+
+        if(flowing){
+            flowOver = 1.0f;
+            flowTimer += Time.deltaTime;
+            if(flowTimer > flowOver){
+                flowTimer = 0;
+                PlayerStats.DecreaseFlow(3);
+                statUI.ChangeFlow(PlayerStats.GetFlow());
+            }
+        }else{
+            flowOver = 3.0f;
         }
     }
 
@@ -119,6 +132,22 @@ public class PlayerMovement : MonoBehaviour
             sprinting = false;
             speed = 5;
             jumpPower = 5;
+        }
+    }
+
+    public void OnRclick(InputAction.CallbackContext context){
+        if(context.performed){
+            flowing = true;
+            Time.timeScale = 0.5f;
+            speed *= 2;
+            jumpPower *= 2;
+        }
+
+        if(context.canceled){
+            flowing = false;
+            Time.timeScale = 1.0f;
+            speed *= 0.5f;
+            jumpPower *= 0.5f;
         }
     }
 
@@ -187,11 +216,7 @@ public class PlayerMovement : MonoBehaviour
             statUI.ChangeHP(PlayerStats.GetHp());
         }
 
-        if(collision.gameObject.layer == 7){
-            PlayerStats.touchingRoom = true;
-            PlayerStats.touchingWhat = collision.gameObject;
-        }
-
+        // Ht nteractable
         if(collision.gameObject.layer == 8){
             PlayerStats.touchingInteractable = true;
             PlayerStats.touchingWhat = collision.gameObject;
@@ -199,6 +224,20 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void OnCollisionExit2D(Collision2D collision){
+        PlayerStats.touchingRoom = false;
+        PlayerStats.touchingInteractable = false;
+        PlayerStats.touchingWhat = null;
+    }
+
+    void OnTriggerEnter2D(Collider2D collision){
+        // Ht door
+        if(collision.gameObject.layer == 7){
+            PlayerStats.touchingRoom = true;
+            PlayerStats.touchingWhat = collision.gameObject;
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D collision){
         PlayerStats.touchingRoom = false;
         PlayerStats.touchingInteractable = false;
         PlayerStats.touchingWhat = null;
