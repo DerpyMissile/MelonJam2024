@@ -141,6 +141,7 @@ public class PlayerMovement : MonoBehaviour
             Time.timeScale = 0.5f;
             speed *= 2;
             jumpPower *= 2;
+            waitTime /= 2;
         }
 
         if(context.canceled){
@@ -148,6 +149,7 @@ public class PlayerMovement : MonoBehaviour
             Time.timeScale = 1.0f;
             speed *= 0.5f;
             jumpPower *= 0.5f;
+            waitTime *= 2;
         }
     }
 
