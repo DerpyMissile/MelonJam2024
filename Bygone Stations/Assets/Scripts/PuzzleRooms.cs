@@ -11,6 +11,9 @@ public class PuzzleRooms : MonoBehaviour
     public GameObject[] rooms;
     public GameObject[] interactables;
 
+    // Drag in same referred StatUI as the other scripts in the Inspector
+    public StatUI statUI;
+
     public void OnInteract(InputAction.CallbackContext context){
         if(context.performed){
             if(PlayerStats.touchingRoom){
@@ -23,11 +26,15 @@ public class PuzzleRooms : MonoBehaviour
                         }
                     }
                 }
-            }else if(PlayerStats.touchingInteractable){
-
+            }
+            else if (PlayerStats.touchingBench) {
+                PlayerStats.RestoreHp(); 
+                Debug.Log("Restored HP"); 
+                statUI.ChangeHP(PlayerStats.GetHp());
+            } 
+            else if(PlayerStats.touchingInteractable){
+                // For other interactable items 
             }
         }
     }
-
-
 }

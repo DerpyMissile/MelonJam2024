@@ -8,6 +8,8 @@ TagManager:
   - Air Enemy
   - Player Attack
   - Bullet
+  - Door
+  - Bench
   layers:
   - Default
   - TransparentFX

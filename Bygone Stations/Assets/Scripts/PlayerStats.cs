@@ -8,6 +8,7 @@ public static class PlayerStats
     static int flow = 100;
     static int enemMult = 1;
     public static bool touchingRoom = false;
+    public static bool touchingBench = false;
     public static bool touchingInteractable = false;
     public static GameObject touchingWhat = null;
     public static int GetHp(){
@@ -30,6 +31,11 @@ public static class PlayerStats
     public static void DecreaseHp(int howMuch){
         hp -= (howMuch * enemMult);
     }
+
+    public static void RestoreHp(){
+        hp = 50;
+    }
+
     public static void DecreaseFlow(int howMuch){
         flow -= howMuch;
         changeMult();

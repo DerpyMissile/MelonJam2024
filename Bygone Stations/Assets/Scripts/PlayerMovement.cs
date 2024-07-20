@@ -228,7 +228,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // Ht nteractable
-        if(collision.gameObject.layer == 8){
+        if(collision.gameObject.layer == 7){
             PlayerStats.touchingInteractable = true;
             PlayerStats.touchingWhat = collision.gameObject;
         }
@@ -236,15 +236,26 @@ public class PlayerMovement : MonoBehaviour
 
     void OnCollisionExit2D(Collision2D collision){
         PlayerStats.touchingRoom = false;
+        PlayerStats.touchingBench = false; 
         PlayerStats.touchingInteractable = false;
         PlayerStats.touchingWhat = null;
     }
 
     void OnTriggerEnter2D(Collider2D collision){
-        // Ht door
+        // Hit interactable layer
         if(collision.gameObject.layer == 7){
-            PlayerStats.touchingRoom = true;
-            PlayerStats.touchingWhat = collision.gameObject;
+            // Hit door
+            if (collision.gameObject.tag == "Door") {
+                Debug.Log("DOOR DOOR DOOR"); 
+                PlayerStats.touchingRoom = true;
+                PlayerStats.touchingWhat = collision.gameObject;
+            }
+            // Hit Bench 
+            else if (collision.gameObject.tag == "Bench") {
+                Debug.Log("BENCH BENCH BENCH"); 
+                PlayerStats.touchingBench = true;
+                PlayerStats.touchingWhat = collision.gameObject;
+            }
         }
         // Bullet hit player
         if (collision.gameObject.tag == "Bullet") {
@@ -258,6 +269,7 @@ public class PlayerMovement : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D collision){
         PlayerStats.touchingRoom = false;
+        PlayerStats.touchingBench = false; 
         PlayerStats.touchingInteractable = false;
         PlayerStats.touchingWhat = null;
     }
