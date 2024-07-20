@@ -55,10 +55,12 @@ public class Enemy3 : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D other) {
-        Debug.Log("OUCH! Health: " + health); 
-        health -= 1; 
-        if (health == 0) {
-            Destroy(this.gameObject, 0.2f); 
+        if (other.tag == "Player Attack") {
+            Debug.Log("OUCH! Health: " + health); 
+            health -= 1; 
+            if (health == 0) {
+                Destroy(this.gameObject, 0.2f); 
+            }
         }
     }
 }
