@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement; 
+
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -73,6 +75,7 @@ public class PlayerMovement : MonoBehaviour
         }else{
             flowOver = 3.0f;
         }
+
     }
 
     public void Jump(InputAction.CallbackContext context){
@@ -219,6 +222,9 @@ public class PlayerMovement : MonoBehaviour
 
             PlayerStats.DecreaseHp(10);
             statUI.ChangeHP(PlayerStats.GetHp());
+            if (PlayerStats.GetHp() == 0) {
+                SceneManager.LoadScene(1); 
+            }
         }
 
         // Ht nteractable
@@ -244,6 +250,9 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.tag == "Bullet") {
             PlayerStats.DecreaseHp(5);
             statUI.ChangeHP(PlayerStats.GetHp());
+            if (PlayerStats.GetHp() == 0) {
+                SceneManager.LoadScene(1); 
+            }
         }
     }
 
