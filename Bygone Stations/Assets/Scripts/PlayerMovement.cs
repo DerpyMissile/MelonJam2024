@@ -238,6 +238,7 @@ public class PlayerMovement : MonoBehaviour
         PlayerStats.touchingBench = false; 
         PlayerStats.touchingInteractable = false;
         PlayerStats.touchingWhat = null;
+        PlayerStats.touchingExit = false;
     }
 
     void OnTriggerEnter2D(Collider2D collision){
@@ -265,6 +266,10 @@ public class PlayerMovement : MonoBehaviour
                 SceneManager.LoadScene(1); 
             }
         }
+
+        if(collision.gameObject.tag == "Exit"){
+            PlayerStats.touchingExit = true;
+        }
     }
 
     void OnTriggerExit2D(Collider2D collision){
@@ -272,6 +277,7 @@ public class PlayerMovement : MonoBehaviour
         PlayerStats.touchingBench = false; 
         PlayerStats.touchingInteractable = false;
         PlayerStats.touchingWhat = null;
+        PlayerStats.touchingExit = false;
     }
 }
 

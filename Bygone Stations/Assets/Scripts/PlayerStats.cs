@@ -9,6 +9,7 @@ public static class PlayerStats
     static int enemMult = 1;
     public static bool touchingRoom = false;
     public static bool touchingBench = false;
+    public static bool touchingExit = false;
     public static bool touchingInteractable = false;
     public static GameObject touchingWhat = null;
     public static int GetHp(){
