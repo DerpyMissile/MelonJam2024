@@ -5,10 +5,8 @@ using UnityEngine;
 public class Boss1 : MonoBehaviour
 {
     [SerializeField] float chaseDistance = 6f; 
-    [SerializeField] float jumpDistance = 3f; 
     [SerializeField] float meleeRange = 1f;
     [SerializeField] float chaseSpeed = 0.5f; 
-    [SerializeField] float jumpSpeed = 3.5f; 
 
     private Rigidbody2D EnemyRB;
     private float health; 
@@ -16,10 +14,11 @@ public class Boss1 : MonoBehaviour
     
 
     GameObject player;
+    public GameObject attackPrefab;
 
     private void Start() {
         player = GameObject.FindWithTag("Player"); 
-        health = 1f; 
+        health = 5f; 
         EnemyRB = GetComponent<Rigidbody2D>(); 
     }
 
@@ -28,6 +27,7 @@ public class Boss1 : MonoBehaviour
             doingAction = true;
             if(DistanceToPlayer() <= meleeRange){
                 // SMACK THE PLAYER
+                Debug.Log("Smacng player");
                 StartCoroutine(doAction(0));
             }
             else if (DistanceToPlayer() < chaseDistance) {
@@ -43,7 +43,8 @@ public class Boss1 : MonoBehaviour
                 transform.Translate(direction * chaseSpeed * Time.deltaTime);
 
                 // ok so boss has 3 behaviors: do nothing, charge, jump
-                int temp = (int)Mathf.Floor(Random.Range(0f, 2f));
+                int temp = (int)Mathf.Floor(Random.Range(0f, 3f));
+                Debug.Log("temp's: " + temp);
                 if(temp == 0){
                     // do nothing
                     StartCoroutine(doAction(1));
@@ -64,16 +65,19 @@ public class Boss1 : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D other) {
-        Debug.Log("OUCH!" + health); 
-        health -= 1; 
-        if (health == 0) {
-            Destroy(this.gameObject, 0.2f); 
-        }
-        else if(this.GetComponent<Transform>().position.x < other.gameObject.GetComponent<Transform>().position.x){
-            EnemyRB.velocity -= new Vector2(1, 1);
-        }
-        else {
-            EnemyRB.velocity += new Vector2(1, 1);
+        if(other.gameObject.tag == "Bullet"){
+        }else{
+            Debug.Log("OUCH!" + health); 
+            health -= 1; 
+            if (health == 0) {
+                Destroy(this.gameObject, 0.2f); 
+            }
+            else if(this.GetComponent<Transform>().position.x < other.gameObject.GetComponent<Transform>().position.x){
+                EnemyRB.velocity -= new Vector2(1, 1);
+            }
+            else {
+                EnemyRB.velocity += new Vector2(1, 1);
+            }
         }
     }
 
@@ -81,6 +85,16 @@ public class Boss1 : MonoBehaviour
         switch(whichAction){
             case 0:
                 // smack player
+                yield return new WaitForSeconds(0.5f);
+                Vector2 newPos = new Vector2(0, 0);
+                if(player.transform.position.x < transform.position.x){
+                    newPos = new Vector2(transform.position.x - (meleeRange/2), transform.position.y+1);
+                }else{
+                    newPos = new Vector2(transform.position.x + (meleeRange/2), transform.position.y+1);
+                }
+                GameObject attackEnem = Instantiate(attackPrefab, newPos, Quaternion.identity); 
+                yield return new WaitForSeconds(1.0f);
+                Destroy(attackEnem);
                 break;
             case 1:
                 // do nothing
@@ -88,15 +102,48 @@ public class Boss1 : MonoBehaviour
             case 2:
                 // charge at player
                 yield return new WaitForSeconds(2.0f);
-                EnemyRB.velocity -= new Vector2(5,0);
-                yield return new WaitForSeconds(0.5f);
-                EnemyRB.velocity += new Vector2(10,0);
+                if(player.transform.position.x < transform.position.x){
+                    EnemyRB.velocity += new Vector2(5,0);
+                    yield return new WaitForSeconds(0.5f);
+                    EnemyRB.velocity -= new Vector2(10,0);
+                }else{
+                    EnemyRB.velocity -= new Vector2(5,0);
+                    yield return new WaitForSeconds(0.5f);
+                    EnemyRB.velocity += new Vector2(10,0);
+                }
+                
                 break;
             case 3:
                 // jump at player
+                yield return new WaitForSeconds(1.0f);
+                StartCoroutine(RotateSwing(EnemyRB.gameObject));
                 break;
         }
         yield return new WaitForSeconds(1.0f);
         doingAction = false;
+    }
+
+    IEnumerator RotateSwing(GameObject firedAttack){
+        float waitTime = 0.5f;
+        float totalRotation = 90f;
+        float rotationSpeed = totalRotation / waitTime;
+        Vector2 currPos = player.GetComponent<Transform>().position;
+
+        float elapsedTime = 0.0f;
+        if(player.transform.position.x < transform.position.x){
+            while (elapsedTime < waitTime){
+                float rotationStep = rotationSpeed * Time.deltaTime;
+                firedAttack.GetComponent<Transform>().RotateAround(currPos, Vector3.forward, rotationStep);
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
+        }else{
+            while (elapsedTime < waitTime){
+                float rotationStep = rotationSpeed * Time.deltaTime;
+                firedAttack.GetComponent<Transform>().RotateAround(currPos, -Vector3.forward, rotationStep);
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
+        }
     }
 }
