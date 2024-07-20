@@ -7,6 +7,9 @@ public static class PlayerStats
     static int hp = 100;
     static int flow = 100;
     static int enemMult = 1;
+    public static bool touchingRoom = false;
+    public static bool touchingInteractable = false;
+    public static GameObject touchingWhat = null;
     public static int GetHp(){
         return hp;
     }
