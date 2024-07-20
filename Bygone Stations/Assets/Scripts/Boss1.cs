@@ -6,11 +6,13 @@ public class Boss1 : MonoBehaviour
 {
     [SerializeField] float chaseDistance = 6f; 
     [SerializeField] float jumpDistance = 3f; 
+    [SerializeField] float meleeRange = 1f;
     [SerializeField] float chaseSpeed = 0.5f; 
     [SerializeField] float jumpSpeed = 3.5f; 
 
     private Rigidbody2D EnemyRB;
     private float health; 
+    private bool doingAction = false;
     
 
     GameObject player;
@@ -22,20 +24,36 @@ public class Boss1 : MonoBehaviour
     }
 
     private void Update() {
-        if (DistanceToPlayer() < chaseDistance) {
-            Vector2 direction = player.transform.position - transform.position;
-            if (direction.x > 0) {
-                direction = new Vector2(1, 0);
+        if(!doingAction){
+            doingAction = true;
+            if(DistanceToPlayer() <= meleeRange){
+                // SMACK THE PLAYER
+                StartCoroutine(doAction(0));
             }
-            else {
-                direction = new Vector2(-1, 0);
-            }
+            else if (DistanceToPlayer() < chaseDistance) {
+                Debug.Log("Chasing");
+                Vector2 direction = player.transform.position - transform.position;
+                if (direction.x > 0) {
+                    direction = new Vector2(1, 0);
+                }
+                else {
+                    direction = new Vector2(-1, 0);
+                }
 
-            if (DistanceToPlayer() > jumpDistance) {
                 transform.Translate(direction * chaseSpeed * Time.deltaTime);
-            }
-            else {
-                transform.Translate(direction * jumpSpeed * Time.deltaTime);
+
+                // ok so boss has 3 behaviors: do nothing, charge, jump
+                int temp = (int)Mathf.Floor(Random.Range(0f, 2f));
+                if(temp == 0){
+                    // do nothing
+                    StartCoroutine(doAction(1));
+                }else if(temp == 1){
+                    StartCoroutine(doAction(2));
+                }else{
+                    StartCoroutine(doAction(3));
+                }
+            }else{
+                doingAction = false;
             }
         }
     }
@@ -52,10 +70,33 @@ public class Boss1 : MonoBehaviour
             Destroy(this.gameObject, 0.2f); 
         }
         else if(this.GetComponent<Transform>().position.x < other.gameObject.GetComponent<Transform>().position.x){
-            EnemyRB.velocity -= new Vector2(5, 1);
+            EnemyRB.velocity -= new Vector2(1, 1);
         }
         else {
-            EnemyRB.velocity += new Vector2(5, 1);
+            EnemyRB.velocity += new Vector2(1, 1);
         }
+    }
+
+    IEnumerator doAction(int whichAction){
+        switch(whichAction){
+            case 0:
+                // smack player
+                break;
+            case 1:
+                // do nothing
+                break;
+            case 2:
+                // charge at player
+                yield return new WaitForSeconds(2.0f);
+                EnemyRB.velocity -= new Vector2(5,0);
+                yield return new WaitForSeconds(0.5f);
+                EnemyRB.velocity += new Vector2(10,0);
+                break;
+            case 3:
+                // jump at player
+                break;
+        }
+        yield return new WaitForSeconds(1.0f);
+        doingAction = false;
     }
 }
