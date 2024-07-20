@@ -18,7 +18,7 @@ public class Boss1 : MonoBehaviour
 
     private void Start() {
         player = GameObject.FindWithTag("Player"); 
-        health = 5f; 
+        health = 10f; 
         EnemyRB = GetComponent<Rigidbody2D>(); 
     }
 

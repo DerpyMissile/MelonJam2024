@@ -133,7 +133,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2473550417512955240, guid: f79c446afdad9604ab11d083c29390f3, type: 3}
       propertyPath: m_ActionEvents.Array.data[15].m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2473550417512955240, guid: f79c446afdad9604ab11d083c29390f3, type: 3}
       propertyPath: m_ActionEvents.Array.data[16].m_PersistentCalls.m_Calls.Array.size
@@ -196,6 +196,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2473550417512955240, guid: f79c446afdad9604ab11d083c29390f3, type: 3}
+      propertyPath: m_ActionEvents.Array.data[15].m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2473550417512955240, guid: f79c446afdad9604ab11d083c29390f3, type: 3}
       propertyPath: m_ActionEvents.Array.data[16].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
@@ -213,6 +217,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2473550417512955240, guid: f79c446afdad9604ab11d083c29390f3, type: 3}
       propertyPath: m_ActionEvents.Array.data[15].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnInteract
+      objectReference: {fileID: 0}
+    - target: {fileID: 2473550417512955240, guid: f79c446afdad9604ab11d083c29390f3, type: 3}
+      propertyPath: m_ActionEvents.Array.data[15].m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: GetScene
       objectReference: {fileID: 0}
     - target: {fileID: 2473550417512955240, guid: f79c446afdad9604ab11d083c29390f3, type: 3}
@@ -237,6 +245,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2473550417512955240, guid: f79c446afdad9604ab11d083c29390f3, type: 3}
       propertyPath: m_ActionEvents.Array.data[15].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PuzzleRooms, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2473550417512955240, guid: f79c446afdad9604ab11d083c29390f3, type: 3}
+      propertyPath: m_ActionEvents.Array.data[15].m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: SceneTransition, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 2473550417512955240, guid: f79c446afdad9604ab11d083c29390f3, type: 3}
@@ -261,6 +273,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2473550417512955240, guid: f79c446afdad9604ab11d083c29390f3, type: 3}
       propertyPath: m_ActionEvents.Array.data[15].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2473550417512955240, guid: f79c446afdad9604ab11d083c29390f3, type: 3}
+      propertyPath: m_ActionEvents.Array.data[15].m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 2473550417512955240, guid: f79c446afdad9604ab11d083c29390f3, type: 3}
