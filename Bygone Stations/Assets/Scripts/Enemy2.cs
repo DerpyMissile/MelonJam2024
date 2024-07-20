@@ -19,6 +19,7 @@ public class Enemy2 : MonoBehaviour {
 
 
     void Start() {
+        speed = 5; 
         EnemyRB = GetComponent<Rigidbody2D>(); 
         facingRight = true; 
         direction = new Vector2(90, 0);
