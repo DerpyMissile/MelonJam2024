@@ -22,7 +22,7 @@ public class MainMenu : MonoBehaviour
 
     IEnumerator switchScene()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(0f);
         // fade to black
         float fadeDuration = 1.0f;
         float elapsedTime = 0.0f;
