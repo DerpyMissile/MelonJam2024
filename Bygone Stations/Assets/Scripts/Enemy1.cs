@@ -21,7 +21,7 @@ namespace RPG.Control {
 
         private void Start() {
             player = GameObject.FindWithTag("Player"); 
-            health = 1; 
+            health = 1f; 
             EnemyRB = GetComponent<Rigidbody2D>(); 
         }
 

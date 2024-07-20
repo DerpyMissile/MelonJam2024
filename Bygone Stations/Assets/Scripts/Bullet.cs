@@ -17,7 +17,6 @@ public class Bullet : MonoBehaviour
         // Normalized - like in math:
         // Obtains the vector's magnitude and ignores the vector's magnitude
         moveDirection = (player.transform.position - transform.position).normalized * speed;
-        Debug.Log(moveDirection.x + " " + moveDirection.y);
         bulletRB.velocity = new Vector2(moveDirection.x, moveDirection.y);
 
         // Vector2 direction = target.transform.position - transform.position;

@@ -175,14 +175,17 @@ public class PlayerMovement : MonoBehaviour
 
         // Ht enemy
         if(collision.gameObject.layer == 6){
-            Debug.Log("Hit Enemy!!!111!!!");
-            if(pc.GetComponent<Transform>().position.x < collision.gameObject.GetComponent<Transform>().position.x){
-                pc_r.velocity -= new Vector2(5, 1);
-                collision.gameObject.GetComponent<Rigidbody2D>().velocity += new Vector2(5, 1);
-            }else{
-                pc_r.velocity += new Vector2(5, 1);
-                collision.gameObject.GetComponent<Rigidbody2D>().velocity -= new Vector2(5, 1);
+            if (collision.gameObject.tag == "Floor Enemy") {
+                Debug.Log("Hit Enemy!!!111!!!");
+                if(pc.GetComponent<Transform>().position.x < collision.gameObject.GetComponent<Transform>().position.x){
+                    pc_r.velocity -= new Vector2(5, 1);
+                    collision.gameObject.GetComponent<Rigidbody2D>().velocity += new Vector2(5, 1);
+                }else{
+                    pc_r.velocity += new Vector2(5, 1);
+                    collision.gameObject.GetComponent<Rigidbody2D>().velocity -= new Vector2(5, 1);
+                }
             }
+
             PlayerStats.DecreaseHp(1);
             statUI.ChangeHP(PlayerStats.GetHp());
         }

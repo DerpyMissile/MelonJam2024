@@ -24,7 +24,7 @@ public class Enemy2 : MonoBehaviour {
         EnemyRB = GetComponent<Rigidbody2D>(); 
         facingRight = true; 
         direction = new Vector2(90, 0);
-        health = 2; 
+        health = 2f; 
     }
 
     void Update()
