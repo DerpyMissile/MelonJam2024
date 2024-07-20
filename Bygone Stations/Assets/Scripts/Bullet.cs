@@ -4,25 +4,26 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-
-    GameObject target;
+    GameObject player;
     public float speed = 3f;
     Rigidbody2D bulletRB; 
-
     Vector2 moveDirection; 
 
     // Start is called before the first frame update
     void Start()
     {
         bulletRB = GetComponent<Rigidbody2D>();
-        target = GameObject.FindGameObjectWithTag("Player");
-        moveDirection = (target.transform.position - transform.position).normalized * speed;
+        player = GameObject.FindGameObjectWithTag("Player");
+        // Normalized - like in math:
+        // Obtains the vector's magnitude and ignores the vector's magnitude
+        moveDirection = (player.transform.position - transform.position).normalized * speed;
+        Debug.Log(moveDirection.x + " " + moveDirection.y);
         bulletRB.velocity = new Vector2(moveDirection.x, moveDirection.y);
 
         // Vector2 direction = target.transform.position - transform.position;
         // transform.Translate(direction * chaseSpeed * Time.deltaTime);
         
-        Destroy(this, 2); 
+        // Destroy(bulletRB, 2.0f); 
     }
 
     // Update is called once per frame

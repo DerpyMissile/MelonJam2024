@@ -185,4 +185,6 @@ public class PlayerMovement : MonoBehaviour
         }
         statUI.ChangeHP(PlayerStats.GetHp());
     }
+
 }
+
