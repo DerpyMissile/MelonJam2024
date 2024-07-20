@@ -172,6 +172,8 @@ public class PlayerMovement : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision){
         Debug.Log("Hit " + collision.gameObject.name);
+
+        // Ht enemy
         if(collision.gameObject.layer == 6){
             Debug.Log("Hit Enemy!!!111!!!");
             if(pc.GetComponent<Transform>().position.x < collision.gameObject.GetComponent<Transform>().position.x){
@@ -182,8 +184,24 @@ public class PlayerMovement : MonoBehaviour
                 collision.gameObject.GetComponent<Rigidbody2D>().velocity -= new Vector2(5, 1);
             }
             PlayerStats.DecreaseHp(1);
+            statUI.ChangeHP(PlayerStats.GetHp());
         }
-        statUI.ChangeHP(PlayerStats.GetHp());
+
+        if(collision.gameObject.layer == 7){
+            PlayerStats.touchingRoom = true;
+            PlayerStats.touchingWhat = collision.gameObject;
+        }
+
+        if(collision.gameObject.layer == 8){
+            PlayerStats.touchingInteractable = true;
+            PlayerStats.touchingWhat = collision.gameObject;
+        }
+    }
+
+    void OnCollisionExit2D(Collision2D collision){
+        PlayerStats.touchingRoom = false;
+        PlayerStats.touchingInteractable = false;
+        PlayerStats.touchingWhat = null;
     }
 
 }
