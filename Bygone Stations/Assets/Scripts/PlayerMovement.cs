@@ -217,7 +217,7 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
 
-            PlayerStats.DecreaseHp(1);
+            PlayerStats.DecreaseHp(10);
             statUI.ChangeHP(PlayerStats.GetHp());
         }
 
@@ -239,6 +239,11 @@ public class PlayerMovement : MonoBehaviour
         if(collision.gameObject.layer == 7){
             PlayerStats.touchingRoom = true;
             PlayerStats.touchingWhat = collision.gameObject;
+        }
+        // Bullet hit player
+        if (collision.gameObject.tag == "Bullet") {
+            PlayerStats.DecreaseHp(5);
+            statUI.ChangeHP(PlayerStats.GetHp());
         }
     }
 
