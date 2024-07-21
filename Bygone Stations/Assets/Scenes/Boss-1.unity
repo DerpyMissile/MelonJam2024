@@ -597,7 +597,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8970230609404230622, guid: a290da69085d56a4681510508e14c064, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.0445
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8970230609404230622, guid: a290da69085d56a4681510508e14c064, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1010,7 +1010,7 @@ MonoBehaviour:
   meleeRange: 3
   chaseSpeed: 0.5
   attackPrefab: {fileID: 7272650463281056198, guid: c94864e586f437943a895b3fc13ce0fd, type: 3}
-  stones: {fileID: 3896317350429064038, guid: 7fd380183618a15498a90f292c3d736b, type: 3}
+  stones: {fileID: 3896317350429064038, guid: 3c9665f7c24ad66489f6ba2397c455d7, type: 3}
   exit: {fileID: 752744989517390535, guid: f001c94a33689f04f9b5455949f63099, type: 3}
 --- !u!58 &1880907443
 CircleCollider2D:
@@ -1108,7 +1108,7 @@ Transform:
   m_GameObject: {fileID: 1880907440}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.12, y: -1.33, z: 0}
+  m_LocalPosition: {x: 7.12, y: 3.82, z: 0}
   m_LocalScale: {x: 2.2214, y: 2.2214, z: 2.2214}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1170,7 +1170,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6965679148299227288, guid: c76956cb1f47a0448b11e34a4e14ba28, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.66
+      value: 2.23
       objectReference: {fileID: 0}
     - target: {fileID: 6965679148299227288, guid: c76956cb1f47a0448b11e34a4e14ba28, type: 3}
       propertyPath: m_LocalPosition.z
