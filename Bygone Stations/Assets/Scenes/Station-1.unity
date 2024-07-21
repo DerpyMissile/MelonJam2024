@@ -525,6 +525,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5921889501360413361, guid: f1b0b2c576910a64ab38a59e378158b1, type: 3}
+      propertyPath: m_text
+      value: Press E To Continue
+      objectReference: {fileID: 0}
     - target: {fileID: 5921889501557116615, guid: f1b0b2c576910a64ab38a59e378158b1, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
@@ -536,6 +540,10 @@ PrefabInstance:
     - target: {fileID: 5921889502228755175, guid: f1b0b2c576910a64ab38a59e378158b1, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5921889502228755175, guid: f1b0b2c576910a64ab38a59e378158b1, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -40.6
       objectReference: {fileID: 0}
     - target: {fileID: 5921889502253000051, guid: f1b0b2c576910a64ab38a59e378158b1, type: 3}
       propertyPath: m_AnchorMax.y
@@ -741,9 +749,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 483018136}
     - target: {fileID: 2491845978111271580, guid: 6fc02dd1e5858a147a80fa4861ebcaf4, type: 3}
+      propertyPath: interactables.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2491845978111271580, guid: 6fc02dd1e5858a147a80fa4861ebcaf4, type: 3}
       propertyPath: interactables.Array.data[0]
       value: 
       objectReference: {fileID: 543785538}
+    - target: {fileID: 2491845978111271580, guid: 6fc02dd1e5858a147a80fa4861ebcaf4, type: 3}
+      propertyPath: interactables.Array.data[1]
+      value: 
+      objectReference: {fileID: 1125823964}
     - target: {fileID: 2726326159646079453, guid: 6fc02dd1e5858a147a80fa4861ebcaf4, type: 3}
       propertyPath: exit
       value: 
@@ -804,6 +820,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1770174886}
+    - target: {fileID: 8395833477120830411, guid: 6fc02dd1e5858a147a80fa4861ebcaf4, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8395833477120830411, guid: 6fc02dd1e5858a147a80fa4861ebcaf4, type: 3}
       propertyPath: dialoguerunner
       value: 
@@ -1640,7 +1660,7 @@ GameObject:
   - component: {fileID: 1125823966}
   - component: {fileID: 1125823965}
   m_Layer: 0
-  m_Name: Signpost
+  m_Name: ShiftJump
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
