@@ -257,7 +257,7 @@ public class PlayerMovement : MonoBehaviour
             PlayerStats.DecreaseFlow(1);
             statUI.ChangeHP(PlayerStats.GetHp());
             if (PlayerStats.GetHp() == 0) {
-                SceneManager.LoadScene(1); 
+                SceneManager.LoadScene(4); 
             }
         }
 
@@ -303,7 +303,7 @@ public class PlayerMovement : MonoBehaviour
             PlayerStats.DecreaseFlow(1);
             statUI.ChangeHP(PlayerStats.GetHp());
             if (PlayerStats.GetHp() == 0) {
-                SceneManager.LoadScene(1); 
+                SceneManager.LoadScene(4); 
             }
         }
 

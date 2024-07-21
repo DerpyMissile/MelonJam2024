@@ -18,6 +18,8 @@ public class MainMenu : MonoBehaviour
 
     public void OnClick(){
         StartCoroutine(switchScene());
+        PlayerStats.RestoreHp();
+        PlayerStats.RestoreFlow();
     }
 
     IEnumerator switchScene()
