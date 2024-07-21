@@ -407,6 +407,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &467922242 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2991330763793012468, guid: c76956cb1f47a0448b11e34a4e14ba28, type: 3}
+  m_PrefabInstance: {fileID: 2087148105}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &546561208
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -435,6 +440,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Asset: {fileID: -944628639613478452, guid: ceca913864d124441a18d3148adca953, type: 3}
   m_ActionId: 60e23d8c-f2c2-4f5d-8cac-fb88dcc23a4e
+--- !u!1 &734019127 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7117655741942869595, guid: c76956cb1f47a0448b11e34a4e14ba28, type: 3}
+  m_PrefabInstance: {fileID: 2087148105}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &763201689
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1009,6 +1019,7 @@ MonoBehaviour:
   chaseDistance: 6
   meleeRange: 3
   chaseSpeed: 0.5
+  rubbleVelocity: 5
   attackPrefab: {fileID: 7272650463281056198, guid: c94864e586f437943a895b3fc13ce0fd, type: 3}
   stones: {fileID: 3896317350429064038, guid: 3c9665f7c24ad66489f6ba2397c455d7, type: 3}
   exit: {fileID: 752744989517390535, guid: f001c94a33689f04f9b5455949f63099, type: 3}
@@ -1136,10 +1147,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 392705455604438750, guid: c76956cb1f47a0448b11e34a4e14ba28, type: 3}
+      propertyPath: m_FlipX
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4138120501982612051, guid: c76956cb1f47a0448b11e34a4e14ba28, type: 3}
       propertyPath: statUI
       value: 
       objectReference: {fileID: 1702293357}
+    - target: {fileID: 4138120501982612051, guid: c76956cb1f47a0448b11e34a4e14ba28, type: 3}
+      propertyPath: gimmickBurst
+      value: 
+      objectReference: {fileID: 734019127}
+    - target: {fileID: 4138120501982612051, guid: c76956cb1f47a0448b11e34a4e14ba28, type: 3}
+      propertyPath: gimmickParent
+      value: 
+      objectReference: {fileID: 467922242}
     - target: {fileID: 4987307518980848580, guid: c76956cb1f47a0448b11e34a4e14ba28, type: 3}
       propertyPath: m_Camera
       value: 
@@ -1170,7 +1193,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6965679148299227288, guid: c76956cb1f47a0448b11e34a4e14ba28, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.23
+      value: 2.88
       objectReference: {fileID: 0}
     - target: {fileID: 6965679148299227288, guid: c76956cb1f47a0448b11e34a4e14ba28, type: 3}
       propertyPath: m_LocalPosition.z

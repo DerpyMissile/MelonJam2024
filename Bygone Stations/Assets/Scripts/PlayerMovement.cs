@@ -33,19 +33,19 @@ public class PlayerMovement : MonoBehaviour
 
     public GameObject gimmickBurst; 
     GameObject newGimmickBurst; 
-    public Animator myAnim; 
+    // public Animator myAnim; 
     void Awake()
     {
         pc = GameObject.FindWithTag("Player");
         pc_r = pc.GetComponent<Rigidbody2D>();
         gimmickBurst.GetComponent<Renderer>().enabled = false; 
-        myAnim = GetComponent<Animator>(); 
+        // myAnim = GetComponent<Animator>(); 
     }
 
     // Update is called once per frame
     void Update()
     {
-        myAnim.Play("PlayerRunning");
+        // myAnim.Play("PlayerRunning");
         timer += Time.deltaTime;
         pc_r.velocity = new Vector2(horizontal * speed, pc_r.velocity.y);
 
@@ -87,7 +87,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     public void Jump(InputAction.CallbackContext context){
-        myAnim.Play("PlayerJump");
+        // myAnim.Play("PlayerJump");
         if(context.performed && isGrounded()){
             pc_r.velocity = new Vector2(pc_r.velocity.x, jumpPower);
         }
@@ -192,7 +192,7 @@ public class PlayerMovement : MonoBehaviour
 
     IEnumerator AttackDrop(){
         Vector2 newPos = pc.GetComponent<Transform>().position;
-        myAnim.Play("PlayerAttack"); 
+        // myAnim.Play("PlayerAttack"); 
         if(facingRight){
             newPos += Vector2.right;
         }else{
