@@ -63,7 +63,7 @@ public class SceneTransition : MonoBehaviour
                 nextScene = "Boss-1";
                 break;
             case "Boss-1":
-                nextScene = "Win";
+                nextScene = "WinScreen";
                 break;
         }
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(nextScene);

@@ -15,6 +15,8 @@ public class Boss1 : MonoBehaviour
 
     GameObject player;
     public GameObject attackPrefab;
+    public GameObject stones;
+    public GameObject exit;
 
     private void Start() {
         player = GameObject.FindWithTag("Player"); 
@@ -70,6 +72,7 @@ public class Boss1 : MonoBehaviour
             Debug.Log("OUCH!" + health); 
             health -= 1; 
             if (health == 0) {
+                Instantiate(exit, transform.position, Quaternion.identity);
                 Destroy(this.gameObject, 0.2f); 
             }
             else if(this.GetComponent<Transform>().position.x < other.gameObject.GetComponent<Transform>().position.x){
@@ -128,6 +131,12 @@ public class Boss1 : MonoBehaviour
         float totalRotation = 90f;
         float rotationSpeed = totalRotation / waitTime;
         Vector2 currPos = player.GetComponent<Transform>().position;
+        if(currPos.y > 4){
+            currPos = new Vector2(currPos.x, 4);
+        }else{
+
+        }
+        
 
         float elapsedTime = 0.0f;
         if(player.transform.position.x < transform.position.x){
@@ -144,6 +153,14 @@ public class Boss1 : MonoBehaviour
                 elapsedTime += Time.deltaTime;
                 yield return null;
             }
+        }
+
+        for(int i = 0; i < (int)Mathf.Floor(Random.Range(0f, 7f)); ++i){
+            float newXPos = this.transform.position.x + Random.Range(-1f, 1f);
+            GameObject rubble = Instantiate(stones, new Vector3(newXPos, this.GetComponent<Renderer>().bounds.min.y, this.transform.position.z), Quaternion.identity);
+            // rubble.GetComponent<Rigidbody2D>().velocity = new Vector2(moveDirection.x, moveDirection.y);
+            yield return new WaitForSeconds(1.0f);
+            Destroy(rubble);
         }
     }
 }

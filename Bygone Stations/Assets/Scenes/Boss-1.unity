@@ -861,6 +861,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01614664b831546d2ae94a42149d80ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1702293359 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2726326159646079453, guid: 6fc02dd1e5858a147a80fa4861ebcaf4, type: 3}
+  m_PrefabInstance: {fileID: 1702293355}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9a106bcf06f0ce4e9c983fe554a70ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1823008013
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -999,6 +1010,8 @@ MonoBehaviour:
   meleeRange: 3
   chaseSpeed: 0.5
   attackPrefab: {fileID: 7272650463281056198, guid: c94864e586f437943a895b3fc13ce0fd, type: 3}
+  stones: {fileID: 3896317350429064038, guid: 7fd380183618a15498a90f292c3d736b, type: 3}
+  exit: {fileID: 752744989517390535, guid: f001c94a33689f04f9b5455949f63099, type: 3}
 --- !u!58 &1880907443
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1135,6 +1148,18 @@ PrefabInstance:
       propertyPath: m_UIInputModule
       value: 
       objectReference: {fileID: 1702293358}
+    - target: {fileID: 4987307518980848580, guid: c76956cb1f47a0448b11e34a4e14ba28, type: 3}
+      propertyPath: m_ActionEvents.Array.data[15].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1702293359}
+    - target: {fileID: 4987307518980848580, guid: c76956cb1f47a0448b11e34a4e14ba28, type: 3}
+      propertyPath: m_ActionEvents.Array.data[15].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: GetScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 4987307518980848580, guid: c76956cb1f47a0448b11e34a4e14ba28, type: 3}
+      propertyPath: m_ActionEvents.Array.data[15].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SceneTransition, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 6107119508608938233, guid: c76956cb1f47a0448b11e34a4e14ba28, type: 3}
       propertyPath: m_Name
       value: Player Variant
