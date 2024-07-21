@@ -50,16 +50,18 @@ namespace RPG.Control {
         }
 
         void OnTriggerEnter2D(Collider2D other) {
-            Debug.Log("OUCH!" + health); 
-            health -= 1; 
-            if (health == 0) {
-                Destroy(this.gameObject, 0.2f); 
-            }
-            else if(this.GetComponent<Transform>().position.x < other.gameObject.GetComponent<Transform>().position.x){
-                EnemyRB.velocity -= new Vector2(5, 1);
-            }
-            else {
-                EnemyRB.velocity += new Vector2(5, 1);
+            if (other.tag == "Player Attack") {
+                Debug.Log("OUCH!" + health); 
+                health -= 1; 
+                if (health == 0) {
+                    Destroy(this.gameObject, 0.2f); 
+                }
+                else if(this.GetComponent<Transform>().position.x < other.gameObject.GetComponent<Transform>().position.x){
+                    EnemyRB.velocity -= new Vector2(5, 1);
+                }
+                else {
+                    EnemyRB.velocity += new Vector2(5, 1);
+                }
             }
         }
     }

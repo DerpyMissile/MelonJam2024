@@ -50,22 +50,25 @@ public class Enemy2 : MonoBehaviour {
     }
 
     void OnTriggerEnter2D(Collider2D other) {
-        Debug.Log("OUCH!" + health); 
-        health -= 1; 
-        if (health == 0) {
-            Destroy(this.gameObject, 0.2f); 
+        if (other.tag == "Player Attack") {
+             Debug.Log("OUCH!" + health); 
+            health -= 1; 
+            if (health == 0) {
+                Destroy(this.gameObject, 0.2f); 
+            }
+            else if(this.GetComponent<Transform>().position.x < other.gameObject.GetComponent<Transform>().position.x){
+                // this.velocity -= new Vector2(5, 1);
+                // other.gameObject.GetComponent<Rigidbody2D>().velocity += new Vector2(5, 1);
+                // If enemy is to the left of player 
+                // Knockback to the left
+                EnemyRB.velocity -= new Vector2(5, 1);
+            }
+            else {
+                // this.velocity += new Vector2(5, 1);
+                // other.gameObject.GetComponent<Rigidbody2D>().velocity -= new Vector2(5, 1);
+                EnemyRB.velocity += new Vector2(5, 1);
+            }
         }
-        else if(this.GetComponent<Transform>().position.x < other.gameObject.GetComponent<Transform>().position.x){
-            // this.velocity -= new Vector2(5, 1);
-            // other.gameObject.GetComponent<Rigidbody2D>().velocity += new Vector2(5, 1);
-            // If enemy is to the left of player 
-            // Knockback to the left
-            EnemyRB.velocity -= new Vector2(5, 1);
-        }
-        else {
-            // this.velocity += new Vector2(5, 1);
-            // other.gameObject.GetComponent<Rigidbody2D>().velocity -= new Vector2(5, 1);
-            EnemyRB.velocity += new Vector2(5, 1);
-        }
+       
     }
 }

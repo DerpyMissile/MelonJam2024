@@ -227,17 +227,17 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // Ht nteractable
-        if(collision.gameObject.layer == 7){
-            PlayerStats.touchingInteractable = true;
-            PlayerStats.touchingWhat = collision.gameObject;
-        }
+        // if(collision.gameObject.layer == 7){
+        //     PlayerStats.touchingInteractable = true;
+        //     PlayerStats.touchingWhat = collision.gameObject;
+        // }
     }
 
     void OnCollisionExit2D(Collision2D collision){
         PlayerStats.touchingRoom = false;
         PlayerStats.touchingBench = false; 
         PlayerStats.touchingInteractable = false;
-        PlayerStats.touchingWhat = null;
+        // PlayerStats.touchingWhat = null;
         PlayerStats.touchingExit = false;
     }
 
@@ -256,6 +256,7 @@ public class PlayerMovement : MonoBehaviour
                 PlayerStats.touchingBench = true;
                 PlayerStats.touchingWhat = collision.gameObject;
             }
+            // Code interactable items 
         }
         // Bullet hit player
         if (collision.gameObject.tag == "Bullet") {
