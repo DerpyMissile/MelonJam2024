@@ -19,6 +19,7 @@ public class Boss1 : MonoBehaviour
     public GameObject attackPrefab;
     public GameObject stones;
     public GameObject exit;
+    public GeneralStoryBeats generalStoryBeats;
     
 
     private void Start() {
@@ -28,6 +29,7 @@ public class Boss1 : MonoBehaviour
     }
 
     private void Update() {
+        transform.rotation = Quaternion.identity;
         if(!doingAction){
             doingAction = true;
             if(DistanceToPlayer() <= meleeRange){
@@ -84,9 +86,10 @@ public class Boss1 : MonoBehaviour
         }else{
             Debug.Log("OUCH!" + health); 
             health -= 1; 
-            if (health == 0) {
+            if (health <= 0) {
                 Instantiate(exit, transform.position, Quaternion.identity);
-                Destroy(this.gameObject, 0.2f); 
+                Destroy(this.gameObject, 0.2f);
+                generalStoryBeats.StartDialogue("Boss-1-End");
             }
             else if(this.GetComponent<Transform>().position.x < other.gameObject.GetComponent<Transform>().position.x){
                 EnemyRB.velocity -= new Vector2(1, 1);
