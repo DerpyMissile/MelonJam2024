@@ -34,7 +34,7 @@ public static class PlayerStats
     }
 
     public static void RestoreHp(){
-        hp = 50;
+        hp = 100;
     }
 
     public static void DecreaseFlow(int howMuch){
