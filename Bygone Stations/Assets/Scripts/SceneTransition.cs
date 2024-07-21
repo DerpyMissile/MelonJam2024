@@ -11,6 +11,7 @@ public class SceneTransition : MonoBehaviour
     private Scene scene;
     public Image screen;
     public GameObject exit;
+    public StatUI statUI;
 
     public void Start(){
         scene = SceneManager.GetActiveScene();
@@ -25,6 +26,9 @@ public class SceneTransition : MonoBehaviour
             temp.a = Mathf.Lerp(1.0f, 0.0f, elapsedTime / fadeDuration);
             screen.color = temp;
         }
+
+        statUI.ChangeHP(PlayerStats.GetHp());
+        statUI.ChangeFlow(PlayerStats.GetFlow());
     }
 
     public void GetScene(InputAction.CallbackContext context){

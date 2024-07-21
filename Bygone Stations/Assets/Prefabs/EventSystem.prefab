@@ -110,6 +110,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   screen: {fileID: 0}
   exit: {fileID: 0}
+  statUI: {fileID: 5425098075692509627}
 --- !u!114 &2491845978111271580
 MonoBehaviour:
   m_ObjectHideFlags: 0

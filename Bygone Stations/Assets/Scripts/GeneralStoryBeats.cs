@@ -24,4 +24,9 @@ public class GeneralStoryBeats : MonoBehaviour
         player.GetComponent<PlayerInput>().enabled = true;
         // Time.timeScale = 1;
     }
+
+    public void StartDialogue(string sceneName){
+        player.GetComponent<PlayerInput>().enabled = false;
+        dialoguerunner.StartDialogue(sceneName);
+    }
 }
