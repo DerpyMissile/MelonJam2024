@@ -160,6 +160,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 26877fcc79c9ef445bbba7f4cb6fcdc2, type: 3}
+--- !u!1 &7117655741942869595 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4072042732640081269, guid: 26877fcc79c9ef445bbba7f4cb6fcdc2, type: 3}
+  m_PrefabInstance: {fileID: 6504380274359352110}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7876474345474623715 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3966238377430299597, guid: 26877fcc79c9ef445bbba7f4cb6fcdc2, type: 3}
@@ -437,6 +442,18 @@ PrefabInstance:
       propertyPath: groundCheck
       value: 
       objectReference: {fileID: 7046065779265971027}
+    - target: {fileID: 6775709171321097471, guid: f79c446afdad9604ab11d083c29390f3, type: 3}
+      propertyPath: gimmickBurst
+      value: 
+      objectReference: {fileID: 7117655741942869595}
+    - target: {fileID: 6775709171321097471, guid: f79c446afdad9604ab11d083c29390f3, type: 3}
+      propertyPath: gimmickParent
+      value: 
+      objectReference: {fileID: 2991330763793012468}
+    - target: {fileID: 7067980407311241330, guid: f79c446afdad9604ab11d083c29390f3, type: 3}
+      propertyPath: m_FlipX
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7067980407311241330, guid: f79c446afdad9604ab11d083c29390f3, type: 3}
       propertyPath: m_Sprite
       value: 
