@@ -10,11 +10,14 @@ public class PuzzleRooms : MonoBehaviour
     public GameObject player;
     public GameObject[] rooms;
     public GameObject[] interactables;
+    public DialogueRunner dialogueRunner;
 
     // Drag in same referred StatUI as the other scripts in the Inspector
     public StatUI statUI;
 
-    
+    public void Start(){
+        dialogueRunner.onDialogueComplete.AddListener(givePermsBack);
+    }
 
     public void OnInteract(InputAction.CallbackContext context){
         if(context.performed){
@@ -37,7 +40,17 @@ public class PuzzleRooms : MonoBehaviour
             } 
             else if(PlayerStats.touchingInteractable){
                 // For other interactable items 
+                player.GetComponent<PlayerInput>().enabled = false;
+                dialogueRunner.StartDialogue(PlayerStats.touchingWhat.name);
+                // while(dialogueRunner.IsDialogueRunning){
+                //     player.GetComponent<PlayerInput>().enabled = false;
+                // }
+                // player.GetComponent<PlayerInput>().enabled = true;
             }
         }
+    }
+
+    private void givePermsBack(){
+        player.GetComponent<PlayerInput>().enabled = true;
     }
 }

@@ -257,6 +257,10 @@ public class PlayerMovement : MonoBehaviour
                 PlayerStats.touchingWhat = collision.gameObject;
             }
             // Code interactable items 
+            else{
+                PlayerStats.touchingInteractable = true;
+                PlayerStats.touchingWhat = collision.gameObject;
+            }
         }
         // Bullet hit player
         if (collision.gameObject.tag == "Bullet") {
