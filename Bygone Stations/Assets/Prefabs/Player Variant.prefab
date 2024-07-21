@@ -40,6 +40,18 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 562590945596708404, guid: f79c446afdad9604ab11d083c29390f3, type: 3}
+      propertyPath: m_LocalScale.x
+      value: -0.2552459
+      objectReference: {fileID: 0}
+    - target: {fileID: 562590945596708404, guid: f79c446afdad9604ab11d083c29390f3, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.49453893
+      objectReference: {fileID: 0}
+    - target: {fileID: 562590945596708404, guid: f79c446afdad9604ab11d083c29390f3, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 562590945596708404, guid: f79c446afdad9604ab11d083c29390f3, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.49
       objectReference: {fileID: 0}
@@ -291,9 +303,21 @@ PrefabInstance:
       propertyPath: groundCheck
       value: 
       objectReference: {fileID: 7046065779265971027}
+    - target: {fileID: 7067980407311241330, guid: f79c446afdad9604ab11d083c29390f3, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -223384091, guid: b276cb20853c5b54a9643ae2a59aac22, type: 3}
     - target: {fileID: 7152391644435306788, guid: f79c446afdad9604ab11d083c29390f3, type: 3}
       propertyPath: m_Constraints
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7736207124871757053, guid: f79c446afdad9604ab11d083c29390f3, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 3.843754
+      objectReference: {fileID: 0}
+    - target: {fileID: 7736207124871757053, guid: f79c446afdad9604ab11d083c29390f3, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 3.8400002
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
