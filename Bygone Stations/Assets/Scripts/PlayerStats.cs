@@ -37,6 +37,10 @@ public static class PlayerStats
         hp = 100;
     }
 
+    public static void RestoreFlow(){
+        flow = 100;
+    }
+
     public static void DecreaseFlow(int howMuch){
         flow -= howMuch;
         changeMult();

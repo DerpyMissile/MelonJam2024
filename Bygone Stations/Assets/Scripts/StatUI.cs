@@ -14,6 +14,11 @@ public class StatUI : MonoBehaviour
         
     }
 
+    void Start(){
+        this.ChangeHP(PlayerStats.GetHp());
+        this.ChangeFlow(PlayerStats.GetFlow());
+    }
+
     public void ChangeHP(int value){
         hp.size = (float)value/100.0f;
     }
