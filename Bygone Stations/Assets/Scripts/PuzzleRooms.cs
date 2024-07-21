@@ -15,7 +15,7 @@ public class PuzzleRooms : MonoBehaviour
     // Drag in same referred StatUI as the other scripts in the Inspector
     public StatUI statUI;
 
-    public void Start(){
+    void Start(){
         dialogueRunner.onDialogueComplete.AddListener(givePermsBack);
     }
 
@@ -42,6 +42,7 @@ public class PuzzleRooms : MonoBehaviour
                 // For other interactable items 
                 player.GetComponent<PlayerInput>().enabled = false;
                 dialogueRunner.StartDialogue(PlayerStats.touchingWhat.name);
+                // Time.timeScale = 0;
                 // while(dialogueRunner.IsDialogueRunning){
                 //     player.GetComponent<PlayerInput>().enabled = false;
                 // }
@@ -52,5 +53,6 @@ public class PuzzleRooms : MonoBehaviour
 
     private void givePermsBack(){
         player.GetComponent<PlayerInput>().enabled = true;
+        // Time.timeScale = 1;
     }
 }

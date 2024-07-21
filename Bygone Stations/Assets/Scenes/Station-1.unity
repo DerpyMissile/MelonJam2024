@@ -581,6 +581,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: EventSystem
       objectReference: {fileID: 0}
+    - target: {fileID: 2491845978111271580, guid: 6fc02dd1e5858a147a80fa4861ebcaf4, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1770174886}
+    - target: {fileID: 2491845978111271580, guid: 6fc02dd1e5858a147a80fa4861ebcaf4, type: 3}
+      propertyPath: dialogueRunner
+      value: 
+      objectReference: {fileID: 878929887}
+    - target: {fileID: 2491845978111271580, guid: 6fc02dd1e5858a147a80fa4861ebcaf4, type: 3}
+      propertyPath: interactables.Array.data[0]
+      value: 
+      objectReference: {fileID: 1121305516}
     - target: {fileID: 2726326159646079453, guid: 6fc02dd1e5858a147a80fa4861ebcaf4, type: 3}
       propertyPath: exit
       value: 
@@ -637,13 +649,18 @@ PrefabInstance:
       propertyPath: flow
       value: 
       objectReference: {fileID: 2007621996}
+    - target: {fileID: 8395833477120830411, guid: 6fc02dd1e5858a147a80fa4861ebcaf4, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1770174886}
+    - target: {fileID: 8395833477120830411, guid: 6fc02dd1e5858a147a80fa4861ebcaf4, type: 3}
+      propertyPath: dialoguerunner
+      value: 
+      objectReference: {fileID: 878929887}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2350900141946332106, guid: 6fc02dd1e5858a147a80fa4861ebcaf4, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 876863519}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6fc02dd1e5858a147a80fa4861ebcaf4, type: 3}
 --- !u!1001 &681190691
 PrefabInstance:
@@ -735,7 +752,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5425098075692509627, guid: 6fc02dd1e5858a147a80fa4861ebcaf4, type: 3}
   m_PrefabInstance: {fileID: 583476308}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 876863515}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 34958f2822f496d499364ddcddb387bf, type: 3}
@@ -746,7 +763,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2599052866259170648, guid: 6fc02dd1e5858a147a80fa4861ebcaf4, type: 3}
   m_PrefabInstance: {fileID: 583476308}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 876863515}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 01614664b831546d2ae94a42149d80ac, type: 3}
@@ -763,40 +780,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a4db7a114972834c8e4117be1d82ba3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &876863515 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2350900141946332106, guid: 6fc02dd1e5858a147a80fa4861ebcaf4, type: 3}
-  m_PrefabInstance: {fileID: 583476308}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &876863516 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2726326159646079453, guid: 6fc02dd1e5858a147a80fa4861ebcaf4, type: 3}
   m_PrefabInstance: {fileID: 583476308}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 876863515}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b9a106bcf06f0ce4e9c983fe554a70ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &876863519
+--- !u!114 &876863519 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 2491845978111271580, guid: 6fc02dd1e5858a147a80fa4861ebcaf4, type: 3}
+  m_PrefabInstance: {fileID: 583476308}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 876863515}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7ca0fdfb4099cd44fb6382c1e4f99c5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1770174886}
-  rooms: []
-  interactables:
-  - {fileID: 1121305516}
-  dialogueRunner: {fileID: 878929887}
-  statUI: {fileID: 715177428}
 --- !u!114 &878929887 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 608460710946470550, guid: f1b0b2c576910a64ab38a59e378158b1, type: 3}

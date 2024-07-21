@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 2599052866259170648}
   - component: {fileID: 5425098075692509627}
   - component: {fileID: 2726326159646079453}
+  - component: {fileID: 2491845978111271580}
+  - component: {fileID: 8395833477120830411}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -108,3 +110,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   screen: {fileID: 0}
   exit: {fileID: 0}
+--- !u!114 &2491845978111271580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2350900141946332106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ca0fdfb4099cd44fb6382c1e4f99c5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  rooms: []
+  interactables:
+  - {fileID: 0}
+  dialogueRunner: {fileID: 0}
+  statUI: {fileID: 5425098075692509627}
+--- !u!114 &8395833477120830411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2350900141946332106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d5c4d520cbf9a34d8fafe40823919d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialoguerunner: {fileID: 0}
+  player: {fileID: 0}

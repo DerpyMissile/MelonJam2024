@@ -6,12 +6,27 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Scenes/MainMenu.unity
+    guid: bd54380d33eb82f4c9ca293703dc9ac9
+  - enabled: 1
+    path: Assets/Scenes/Station-1.unity
+    guid: 1bba33dcd13d6f94f8a8e4b6ec6b295f
+  - enabled: 1
+    path: Assets/Scenes/Puzzle-1.unity
+    guid: e811f72a21954ed42862179ede51a132
+  - enabled: 1
+    path: Assets/Scenes/Boss-1.unity
+    guid: 3863b5717c1bddf4f90463d89fa631fa
   - enabled: 1
     path: Assets/Scenes/GameOver.unity
     guid: ded6f4a8867dac747865013cd9699480
   - enabled: 1
-    path: Assets/Scenes/Station-1.unity
-    guid: 1bba33dcd13d6f94f8a8e4b6ec6b295f
+    path: Assets/Scenes/WinScreen.unity
+    guid: df0c663104f382a47891a77cea691be1
+  - enabled: 0
+    path: Assets/Scenes/SampleScene.unity
+    guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 0
+    path: Assets/Scenes/HaoScene.unity
+    guid: 3f5490562397eb445ba80a1e92be5463
   m_configObjects: {}

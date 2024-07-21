@@ -1489,7 +1489,7 @@ SpriteRenderer:
   m_Size: {x: 5.12, y: 5.12}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &845064552
@@ -2075,7 +2075,7 @@ SpriteRenderer:
   m_Size: {x: 5.12, y: 5.12}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1098121533
@@ -2940,18 +2940,8 @@ MonoBehaviour:
   - {fileID: 1548583386}
   - {fileID: 120805414}
   interactables: []
+  dialogueRunner: {fileID: 0}
   statUI: {fileID: 1745347199}
---- !u!114 &1745347202 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2726326159646079453, guid: 6fc02dd1e5858a147a80fa4861ebcaf4, type: 3}
-  m_PrefabInstance: {fileID: 1745347197}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1745347200}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9a106bcf06f0ce4e9c983fe554a70ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1767555684
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7931,3 +7921,4 @@ SceneRoots:
   - {fileID: 1163404355}
   - {fileID: 1098121533}
   - {fileID: 845064552}
+  - {fileID: 369778457}
