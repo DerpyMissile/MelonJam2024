@@ -169,7 +169,7 @@ public class Boss1 : MonoBehaviour
         }
 
         yield return new WaitUntil(() => onFloor);
-        for(int i = 0; i < (int)Mathf.Floor(Random.Range(0f, 7f)); ++i){
+        for(int i = 0; i < Random.Range(0, 7); ++i){
             float newXPos = this.transform.position.x + Random.Range(-1f, 1f);
             GameObject rubble = Instantiate(stones, new Vector3(newXPos, this.GetComponent<Renderer>().bounds.min.y, this.transform.position.z), Quaternion.identity);
             rubble.GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(0.0f, 1.0f) * rubbleVelocity, Random.Range(0.0f, 1.0f) * rubbleVelocity);
