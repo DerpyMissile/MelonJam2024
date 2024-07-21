@@ -9,7 +9,7 @@ using UnityEngine.SceneManagement;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float speed = 5;
-    [SerializeField] private float jumpPower = 5;
+    [SerializeField] private float jumpPower = 7;
     private bool facingRight = true;
     private bool swinging = false;
     private float horizontal;
@@ -28,15 +28,24 @@ public class PlayerMovement : MonoBehaviour
     public Transform groundCheck;
     public LayerMask groundLayer;
     public StatUI statUI;
+
+    public GameObject gimmickParent; 
+
+    public GameObject gimmickBurst; 
+    GameObject newGimmickBurst; 
+    public Animator myAnim; 
     void Awake()
     {
         pc = GameObject.FindWithTag("Player");
         pc_r = pc.GetComponent<Rigidbody2D>();
+        gimmickBurst.GetComponent<Renderer>().enabled = false; 
+        myAnim = GetComponent<Animator>(); 
     }
 
     // Update is called once per frame
     void Update()
     {
+        myAnim.Play("PlayerRunning");
         timer += Time.deltaTime;
         pc_r.velocity = new Vector2(horizontal * speed, pc_r.velocity.y);
 
@@ -75,10 +84,10 @@ public class PlayerMovement : MonoBehaviour
         }else{
             flowOver = 3.0f;
         }
-
     }
 
     public void Jump(InputAction.CallbackContext context){
+        myAnim.Play("PlayerJump");
         if(context.performed && isGrounded()){
             pc_r.velocity = new Vector2(pc_r.velocity.x, jumpPower);
         }
@@ -128,36 +137,62 @@ public class PlayerMovement : MonoBehaviour
         if(context.performed){
             sprinting = true;
             speed = 7;
-            jumpPower = 7;
+            jumpPower = 10;
         }
 
         if(context.canceled){
             sprinting = false;
             speed = 5;
-            jumpPower = 5;
+            jumpPower = 7;
         }
     }
 
     public void OnRclick(InputAction.CallbackContext context){
+        
         if(context.performed){
+            gimmickBurst.GetComponent<Renderer>().enabled = true; 
             flowing = true;
             Time.timeScale = 0.5f;
             speed *= 2;
             jumpPower *= 2;
             waitTime /= 2;
+
+            newGimmickBurst = Instantiate(gimmickBurst, gimmickParent.transform.position, Quaternion.identity); 
         }
 
         if(context.canceled){
+            gimmickBurst.GetComponent<Renderer>().enabled = false; 
             flowing = false;
             Time.timeScale = 1.0f;
             speed *= 0.5f;
             jumpPower *= 0.5f;
             waitTime *= 2;
+            Destroy(newGimmickBurst); 
         }
     }
 
+
+    
+/*else if ((distanceFromPlayer <= shootingRange) && (nextFireTime < Time.time)) {
+            GameObject firedBullet = Instantiate(bullet, bulletParent.transform.position, Quaternion.identity); 
+            // Quaternion.identity means no rotation
+            StartCoroutine(destroyBullet(firedBullet));
+            nextFireTime = Time.time + fireRate;
+        }  
+    }
+
+    // Coroutines happen at the same time as other functions, like Update() 
+    IEnumerator destroyBullet(GameObject gameObject){
+        // The return for coroutines 
+        yield return new WaitForSeconds(2.0f);
+        Destroy(gameObject);
+    }
+
+*/ 
+
     IEnumerator AttackDrop(){
         Vector2 newPos = pc.GetComponent<Transform>().position;
+        myAnim.Play("PlayerAttack"); 
         if(facingRight){
             newPos += Vector2.right;
         }else{
