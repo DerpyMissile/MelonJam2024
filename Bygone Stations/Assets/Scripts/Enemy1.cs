@@ -13,6 +13,9 @@ namespace RPG.Control {
         [SerializeField] float chaseSpeed = 0.5f; 
         [SerializeField] float jumpSpeed = 3.5f; 
 
+        public Sprite Unawakened;
+        public Sprite Awakened;  
+
         private Rigidbody2D EnemyRB;
         private float health; 
         
@@ -27,6 +30,7 @@ namespace RPG.Control {
 
         private void Update() {
             if (DistanceToPlayer() < chaseDistance) {
+                this.gameObject.GetComponent<SpriteRenderer>().sprite = Awakened; 
                 Vector2 direction = player.transform.position - transform.position;
                 if (direction.x > 0) {
                     direction = new Vector2(1, 0);
@@ -41,6 +45,9 @@ namespace RPG.Control {
                 else {
                     transform.Translate(direction * jumpSpeed * Time.deltaTime);
                 }
+            }
+            else {
+                this.gameObject.GetComponent<SpriteRenderer>().sprite = Unawakened; 
             }
         }
      
@@ -65,6 +72,8 @@ namespace RPG.Control {
             }
         }
     }
+
+    
 }
 
 
